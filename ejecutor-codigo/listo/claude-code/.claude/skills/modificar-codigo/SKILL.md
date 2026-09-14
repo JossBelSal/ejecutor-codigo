@@ -1,6 +1,6 @@
 ---
 name: modificar-codigo
-description: 'Ejecutor: corrige, cambia, mejora o refactoriza código existente en cualquier lenguaje con propuesta, aprobación y entrega bloque por bloque (cómo probar y revertir). Usar al pedir cambios.'
+description: 'Ejecutor: corrige, mejora o refactoriza código existente con propuesta, aprobación y entrega bloque por bloque. Usar al pedir cambios sobre código que ya existe.'
 ---
 
 # Modo: modificar código

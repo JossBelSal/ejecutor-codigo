@@ -1,6 +1,6 @@
 ---
 name: depurar-error
-description: 'Ejecutor: diagnostica errores en cualquier lenguaje a partir de mensajes, capturas o comportamiento raro: causas probables, cómo confirmarlas y corrección con aprobación. Usar al compartir una falla.'
+description: 'Ejecutor: diagnostica errores desde el mensaje, una captura o un comportamiento raro: causas probables, cómo confirmarlas y corrección. Usar al compartir una falla.'
 ---
 
 # Modo: depurar error

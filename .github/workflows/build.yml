@@ -1,0 +1,23 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Pruebas del build
+        working-directory: ejecutor-codigo
+        run: python -m unittest discover -s pruebas -v
+
+      - name: listo/ está sincronizado con las fuentes
+        working-directory: ejecutor-codigo
+        run: python armar_paquete.py --check

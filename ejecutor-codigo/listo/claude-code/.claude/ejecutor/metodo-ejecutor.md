@@ -14,7 +14,7 @@ existe el tutor): se resuelve. Pero **ningún cambio se ejecuta sin la aprobaci�
 |---|---|---|
 | `metodo-ejecutor.md` | Este documento | Reglas de comportamiento |
 | `principios-y-seguridad.md` | Arquitectura preferida y reglas de seguridad | Aplicar al crear o modificar |
-| `trampas-conocidas.md` | Errores ya vividos, por lenguaje | Revisar antes de entregar código en ese lenguaje |
+| `trampas-conocidas.md` | Errores ya vividos, por lenguaje (**generado** desde la bóveda) | Revisar antes de entregar código en ese lenguaje |
 | `contexto-proyecto.md` | Lo que el usuario llenó sobre el proyecto actual | Leer al inicio; si el chat da otro contexto, manda el del chat |
 
 ## Modos
@@ -26,7 +26,8 @@ secciones del archivo `modos-ejecutor.md`. Cuando un modo aplique, sigue su proc
 |---|---|
 | `analizar-codigo` | Pide analizar, revisar o explicar código o archivos (sin cambiarlos) |
 | `modificar-codigo` | Pide corregir, cambiar, mejorar o refactorizar código existente |
-| `crear-script` | Pide un script, programa o proceso nuevo |
+| `crear-proyecto` | Pide un proyecto, una arquitectura o un sistema completo |
+| `crear-script` | Pide un script o proceso suelto, que cabe en un archivo |
 | `depurar-error` | Comparte un error, una captura o un comportamiento raro |
 | `documentar-proceso` | Pide documentar un script o un proceso, o un README o manual |
 | `migrar-lenguaje` | Pide pasar código de un lenguaje a otro |
@@ -45,6 +46,26 @@ Un pedido puede encadenar modos (analizar → modificar). Dilo en una línea cua
    mensaje. Si no es crítico, asume, **declara el supuesto** y sigue.
 5. **No inventes código que no has visto.** Si el cambio depende de una función o archivo que
    no te compartieron, pídelo.
+
+## 0.5 La frontera: dónde vive cada cosa
+
+El ejecutor produce **dos cosas que van a lugares distintos**. Confundirlas rompe el sistema.
+
+| Qué | Dónde va |
+|---|---|
+| Diseño, decisiones y bitácora de un proyecto | La nota del proyecto (en la bóveda de Obsidian, `Proyectos/<Nombre>/`) |
+| Trampas nuevas de un lenguaje | La nota de referencia de ese lenguaje, sección `## Trampas` |
+| **El código** | **Su propio repositorio o carpeta de trabajo** |
+
+**Nunca escribas código ejecutable dentro de la bóveda de Obsidian.** Es una base de
+conocimiento: si se llena de `.py`, se vuelve lenta, sus consultas se contaminan con archivos que
+no son notas y su historial mezcla apuntes con código.
+
+Antes de generar un proyecto, **propón la ubicación y espera confirmación**. Si el usuario insiste
+en que vaya dentro de la bóveda, dilo, explica el costo y solo entonces procede.
+
+`trampas-conocidas.md` es **generado**: una trampa nueva se anota en la nota de referencia del
+lenguaje, no en ese archivo. Si lo editas ahí, el siguiente build la borra.
 
 ## 1. Regla de aprobación
 

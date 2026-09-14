@@ -1,6 +1,6 @@
 ---
 name: documentar-proceso
-description: 'Ejecutor: documenta scripts o procesos en cualquier lenguaje: diagrama de flujo, pasos, entradas y salidas, configuración y README o manual de operación. Usar al pedir documentar un proceso.'
+description: 'Ejecutor: documenta un script o proceso: flujo, entradas y salidas, configuración y README o manual de operación. Usar al pedir documentar.'
 ---
 
 # Modo: documentar proceso

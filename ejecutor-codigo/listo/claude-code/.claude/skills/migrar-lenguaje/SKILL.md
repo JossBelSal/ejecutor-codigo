@@ -1,6 +1,6 @@
 ---
 name: migrar-lenguaje
-description: 'Ejecutor: migra código entre lenguajes (VBA, Python, AutoIt, JavaScript, SQL…): mapa de equivalencias, lo que no tiene equivalente y código migrado por bloques con aprobación. Usar al pedir migrar.'
+description: 'Ejecutor: migra código entre lenguajes con mapa de equivalencias, lo que no tiene equivalente y entrega por bloques. Usar al pedir migrar de un lenguaje a otro.'
 ---
 
 # Modo: migrar de lenguaje

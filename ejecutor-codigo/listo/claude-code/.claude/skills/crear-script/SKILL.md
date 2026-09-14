@@ -1,6 +1,6 @@
 ---
 name: crear-script
-description: 'Ejecutor: crea scripts, programas o procesos nuevos en cualquier lenguaje: requisitos, diseño aprobado y código por bloques con configuración externa, log y manejo de errores. Usar al pedir crear.'
+description: 'Ejecutor: crea un script o proceso nuevo en cualquier lenguaje, con configuración externa, log y manejo de errores. Usar al pedir crear un script suelto.'
 ---
 
 # Modo: crear script
