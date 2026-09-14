@@ -7,7 +7,8 @@ línea.
 
 ### La frontera: código fuera, conocimiento dentro
 
-**Nunca se escribe código ejecutable dentro de la bóveda.**
+**Nunca se escribe código de trabajo dentro de la bóveda.** La excepción son los ejercicios de
+estudio (`<Lenguaje>/Aprendizaje/`, `Python/python_udemy/`), que escribe el tutor.
 
 | Qué | Dónde va |
 |---|---|

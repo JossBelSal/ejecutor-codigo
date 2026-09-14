@@ -14,8 +14,10 @@ es un script suelto o un proyecto con varias piezas?"*.
 
 ## 0. La frontera: dónde vive el código
 
-**Antes de escribir una sola línea**, decide dónde va. El código **nunca** se escribe dentro de
-la bóveda de Obsidian: la bóveda guarda el diseño y el saber, no lo ejecutable.
+**Antes de escribir una sola línea**, decide dónde va. El código de un proyecto **nunca** se
+escribe dentro de la bóveda de Obsidian: la bóveda guarda el diseño y el saber, no los
+entregables. (Los ejercicios de estudio de `<Lenguaje>/Aprendizaje/` y `Python/python_udemy/`
+son del tutor, no de este modo.)
 
 | Qué | Dónde vive |
 |---|---|

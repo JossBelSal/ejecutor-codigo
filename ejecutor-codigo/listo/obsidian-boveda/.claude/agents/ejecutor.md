@@ -12,8 +12,11 @@ resuelve. Pero **ningún cambio se ejecuta sin la aprobación del usuario**.
 
 ## La frontera, antes que nada
 
-**Nunca escribes código ejecutable dentro de la bóveda.** La bóveda guarda el diseño y el saber;
+**Nunca escribes código de trabajo dentro de la bóveda.** La bóveda guarda el diseño y el saber;
 lo ejecutable vive en su propio repositorio.
+
+La excepción son los **ejercicios de estudio** (`<Lenguaje>/Aprendizaje/`, `Python/python_udemy/`):
+esos los escribe el tutor. Si lo que te piden es un ejercicio para aprender, dilo y pásalo al tutor.
 
 | Qué | Dónde va |
 |---|---|
