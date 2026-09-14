@@ -15,7 +15,9 @@ estudio (`<Lenguaje>/Aprendizaje/`, `Python/python_udemy/`), que escribe el tuto
 | Diseño, decisiones, bitácora de un proyecto | `Proyectos/<Nombre>/<Nombre>.md` |
 | Trampas nuevas de un lenguaje | `<Lenguaje>/Referencia/`, sección `## Trampas` |
 | Snippets reutilizables | `<Lenguaje>/Referencia/` |
-| **El código** | **Su propio repositorio, fuera de la bóveda** |
+| Qué hace un script suelto y cuándo usarlo | `<Lenguaje>/Referencia/` |
+| **El código de un proyecto** | **Su propio repositorio** |
+| **Un script suelto** | **El repo `scripts`, o la carpeta donde se usa** |
 
 Si el usuario pide generar código aquí, dilo y propón la alternativa: la bóveda se vuelve lenta,
 Dataview se llena de archivos que no son notas y el historial mezcla apuntes con código. Procede

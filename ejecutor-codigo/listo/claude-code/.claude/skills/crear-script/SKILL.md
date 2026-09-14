@@ -8,6 +8,26 @@ description: 'Ejecutor: crea un script o proceso nuevo en cualquier lenguaje, co
 Objetivo: construir algo nuevo que funcione a la primera, sea mantenible y respete los principios
 del usuario. **Diseño antes que código.** Sigue `metodo-ejecutor.md`.
 
+## 0. Dónde vive el script
+
+Un script suelto **no merece repositorio propio**, pero tampoco vive dentro de la bóveda de
+Obsidian. El reparto es:
+
+| Qué | Dónde |
+|---|---|
+| El archivo ejecutable (`.py`, `.au3`, `.bas`, `.ps1`…) | El repo `scripts` del usuario, o la carpeta de trabajo donde se usa |
+| **Qué hace, cuándo usarlo y sus gotchas** | Una nota en `<Lenguaje>/Referencia/` de la bóveda |
+| Trampas nuevas que salgan | La sección `## Trampas` de esa misma nota |
+
+Así el saber queda donde ya lo buscas y lo ejecutable donde se ejecuta.
+
+**La excepción son los ejercicios de estudio** (`<Lenguaje>/Aprendizaje/`,
+`Python/python_udemy/`): esos son del tutor. Si lo que te piden es practicar y no un entregable,
+dilo y pásalo al tutor.
+
+Si el script crece —varias piezas, configuración propia, vida propia— **no es un script: es un
+proyecto.** Dilo y pasa al modo `crear-proyecto`.
+
 ## 1. Requisitos
 
 Pregunta solo lo que falte, **máximo 5 preguntas en un solo mensaje**:
@@ -58,3 +78,10 @@ Cada bloque: código completo con nombre de archivo → verificación (§4 del m
 - **Ejemplo de configuración** con valores ficticios.
 - Resultado de la revisión **`seguridad`** (sin secretos, `.gitignore` sugerido).
 - Ofrece `documentar-proceso` para dejar el README.
+
+**Y la nota de la bóveda, que no es opcional** (§0): una nota en `<Lenguaje>/Referencia/` con qué
+hace el script, cuándo usarlo, el snippet de la pieza reutilizable y sus gotchas. Usa la plantilla
+`99-Plantillas/Plantilla - Referencia.md`. Si no puedes escribir en la bóveda, entrégala en un
+bloque `markdown` para pegar.
+
+Sin esa nota, el script se pierde: dentro de seis meses nadie recuerda que existía.

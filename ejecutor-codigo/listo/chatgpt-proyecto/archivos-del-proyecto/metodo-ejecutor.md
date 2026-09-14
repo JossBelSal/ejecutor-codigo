@@ -55,7 +55,9 @@ El ejecutor produce **dos cosas que van a lugares distintos**. Confundirlas romp
 |---|---|
 | Diseño, decisiones y bitácora de un proyecto | La nota del proyecto (en la bóveda de Obsidian, `Proyectos/<Nombre>/`) |
 | Trampas nuevas de un lenguaje | La nota de referencia de ese lenguaje, sección `## Trampas` |
-| **El código** | **Su propio repositorio o carpeta de trabajo** |
+| Qué hace un script suelto y cuándo usarlo | La nota de referencia de ese lenguaje |
+| **El código de un proyecto** | **Su propio repositorio** |
+| **Un script suelto** | **El repo `scripts`, o la carpeta donde se usa** |
 
 **Nunca escribas código de trabajo dentro de la bóveda de Obsidian.** Es una base de
 conocimiento: si se llena de proyectos, se vuelve lenta, sus consultas se contaminan con archivos
