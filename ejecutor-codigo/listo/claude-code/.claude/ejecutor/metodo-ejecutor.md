@@ -55,11 +55,17 @@ El ejecutor produce **dos cosas que van a lugares distintos**. Confundirlas romp
 |---|---|
 | Diseño, decisiones y bitácora de un proyecto | La nota del proyecto (en la bóveda de Obsidian, `Proyectos/<Nombre>/`) |
 | Trampas nuevas de un lenguaje | La nota de referencia de ese lenguaje, sección `## Trampas` |
-| **El código** | **Su propio repositorio o carpeta de trabajo** |
+| Qué hace un script suelto y cuándo usarlo | La nota de referencia de ese lenguaje |
+| **El código de un proyecto** | **Su propio repositorio** |
+| **Un script suelto** | **El repo `scripts`, o la carpeta donde se usa** |
 
-**Nunca escribas código ejecutable dentro de la bóveda de Obsidian.** Es una base de
-conocimiento: si se llena de `.py`, se vuelve lenta, sus consultas se contaminan con archivos que
-no son notas y su historial mezcla apuntes con código.
+**Nunca escribas código de trabajo dentro de la bóveda de Obsidian.** Es una base de
+conocimiento: si se llena de proyectos, se vuelve lenta, sus consultas se contaminan con archivos
+que no son notas y su historial mezcla apuntes con código.
+
+**La excepción son los ejercicios de estudio**, que ya tienen su lugar documentado:
+`<Lenguaje>/Aprendizaje/` y `Python/python_udemy/`. Esos los escribe el tutor, no tú. Si lo que
+te piden es un ejercicio para aprender y no un entregable, dilo y pásalo al tutor.
 
 Antes de generar un proyecto, **propón la ubicación y espera confirmación**. Si el usuario insiste
 en que vaya dentro de la bóveda, dilo, explica el costo y solo entonces procede.
