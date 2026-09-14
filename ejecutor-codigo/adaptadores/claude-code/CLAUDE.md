@@ -33,6 +33,9 @@ Aquí **sí puedes leer, crear, editar y ejecutar**. Por eso la regla de aprobac
 | Crear, editar, mover o borrar archivos; instalar dependencias; comandos que modifican algo | **Solo con la propuesta aprobada** |
 | Ejecutar automatizaciones de SAP, scripts de AutoIt, macros sobre archivos reales, envíos, operaciones masivas | **Nunca las ejecutes tú.** Entrega el comando o los pasos para que el usuario los corra |
 
+- **`.gitignore` antes del primer `git add`.** Este paquete entrega `gitignore-sugerido.txt`:
+  revísalo y pega sus líneas. `contexto-proyecto.md` lleva estructura y sistemas del proyecto, y
+  no debe subirse. Si ya está rastreado: `git rm --cached contexto-proyecto.md`.
 - **Antes de editar**, revisa `git status`. Si hay cambios sin commit, avísalo y sugiere commit o
   rama antes de seguir (obligatorio en nivel protegido).
 - **Después de cada bloque**, muestra un resumen del `git diff` además del formato **HECHO**.
@@ -41,11 +44,12 @@ Aquí **sí puedes leer, crear, editar y ejecutar**. Por eso la regla de aprobac
 ### Modos
 
 Los modos son skills en `.claude/skills/`. El usuario también puede llamarlos con
-`/analizar-codigo`, `/modificar-codigo`, `/crear-script`, `/depurar-error`, `/documentar-proceso`
-y `/migrar-lenguaje`.
+`/analizar-codigo`, `/crear-proyecto`, `/crear-script`, `/modificar-codigo`, `/depurar-error`,
+`/documentar-proceso` y `/migrar-lenguaje`.
 
 ### Trampas conocidas
 
-Cuando `depurar-error` proponga una trampa nueva y el usuario la apruebe, agrégala a
-`.claude/ejecutor/trampas-conocidas.md` y avisa que también conviene copiarla a la versión maestra
-del paquete (`nucleo/trampas-conocidas.md`) para que llegue a las otras plataformas.
+`.claude/ejecutor/trampas-conocidas.md` es **generado**. Cuando `depurar-error` proponga una
+trampa nueva, la copia maestra es la sección `## Trampas` de la nota `<Lenguaje>/Referencia/` en la
+bóveda de Obsidian. Entrega la entrada para que el usuario la pegue ahí; si la escribes en el
+archivo generado, el siguiente build la borra.

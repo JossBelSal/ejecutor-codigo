@@ -1,6 +1,6 @@
 ---
 name: analizar-codigo
-description: 'Ejecutor: análisis rápido de código o archivos en cualquier lenguaje (qué hace, flujo, dependencias, riesgos, mejoras) sin modificar nada. Usar al pedir analizar o explicar código, no en estudio.'
+description: 'Ejecutor: analiza código o archivos en cualquier lenguaje sin modificarlos (qué hace, flujo, riesgos, mejoras). Usar al pedir analizar o explicar código, no en estudio.'
 ---
 
 # Modo: analizar código

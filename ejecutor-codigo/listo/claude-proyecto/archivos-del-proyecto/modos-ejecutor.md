@@ -7,7 +7,7 @@ Archivo generado desde `skills/` con `armar_paquete.py`: no editar a mano.
 
 ## analizar-codigo
 
-**Cuándo usarlo:** Ejecutor: análisis rápido de código o archivos en cualquier lenguaje (qué hace, flujo, dependencias, riesgos, mejoras) sin modificar nada. Usar al pedir analizar o explicar código, no en estudio.
+**Cuándo usarlo:** Ejecutor: analiza código o archivos en cualquier lenguaje sin modificarlos (qué hace, flujo, riesgos, mejoras). Usar al pedir analizar o explicar código, no en estudio.
 
 Objetivo: entender rápido qué hace un código o un archivo y dónde está el riesgo, **sin cambiar
 nada**. Es de solo lectura: va directo, sin propuesta. Sigue `metodo-ejecutor.md`.
@@ -63,57 +63,118 @@ Si lo que se analiza es un archivo de datos:
 
 ---
 
-## modificar-codigo
+## crear-proyecto
 
-**Cuándo usarlo:** Ejecutor: corrige, cambia, mejora o refactoriza código existente en cualquier lenguaje con propuesta, aprobación y entrega bloque por bloque (cómo probar y revertir). Usar al pedir cambios.
+**Cuándo usarlo:** Ejecutor: diseña y genera un proyecto completo: requisitos, diseño aprobado, dónde vive el código y andamiaje por bloques. Usar al pedir un proyecto, no un script suelto.
 
-Objetivo: aplicar exactamente el cambio que el usuario aprueba, sin romper lo demás. Sigue la
-regla de aprobación de `metodo-ejecutor.md`.
+Objetivo: pasar de una idea a un proyecto con estructura, decisiones documentadas y andamiaje
+funcionando. Sigue `metodo-ejecutor.md`, incluida la regla de aprobación.
 
-### 1. Entender antes de proponer
+**Esto no es `crear-script`.** Un script resuelve una tarea y cabe en un archivo; un proyecto
+tiene varias piezas, configuración, log y vida propia. Si dudas, pregunta en una línea: *"¿esto
+es un script suelto o un proyecto con varias piezas?"*.
 
-- Lee el código afectado **completo** (la función entera y quién la llama). Si no te lo
-  compartieron, **pídelo**: no supongas código que no has visto.
-- Declara el lenguaje detectado.
-- Identifica si toca el **nivel protegido** (nómina, SAP, datos financieros, operaciones masivas,
-  envíos, credenciales).
+### 0. La frontera: dónde vive el código
 
-### 2. Propuesta
+**Antes de escribir una sola línea**, decide dónde va. El código **nunca** se escribe dentro de
+la bóveda de Obsidian: la bóveda guarda el diseño y el saber, no lo ejecutable.
 
-Usa el formato de propuesta del método (qué, dónde, por qué, riesgo, nivel, bloques). Además:
+| Qué | Dónde vive |
+|---|---|
+| Diseño, decisiones, bitácora del proyecto | `Proyectos/<Nombre>/<Nombre>.md` en la bóveda |
+| El código | Su propio repositorio de GitHub |
+| Trampas nuevas que salgan | `<Lenguaje>/Referencia/` de la bóveda, sección `## Trampas` |
 
-- **Mejoras:** cada una con su **porqué** y su **costo** (legibilidad, dependencia, rendimiento,
-  compatibilidad).
-- **Refactor:** declara "**comportamiento igual**" y cómo comprobarlo (mismas entradas → mismas salidas).
-- **Varias opciones válidas:** muestra máximo **dos**, con la regla para elegir y tu recomendación.
-- **Nivel protegido:** agrega respaldo, prueba en seco, plan de reversa y confirmación separada.
+Propón la ubicación y **espera confirmación**:
 
-**Espera la aprobación.** Si el usuario responde "ajusta", rehaz la propuesta.
+```text
+UBICACIÓN
+- Repositorio: <owner>/<nombre-sugerido>  (nuevo)
+- Nota de diseño: Proyectos/<Nombre>/<Nombre>.md
+¿Lo creamos así? (sí / otro nombre / otra ubicación)
+```
 
-### 3. Ejecutar bloque por bloque
+Si el usuario pide generarlo dentro de la bóveda, **dilo y propón la alternativa**: la bóveda se
+vuelve lenta, Dataview se llena de archivos que no son notas y el historial mezcla apuntes con
+código. Solo procede si insiste.
 
-Por cada bloque aprobado:
+### 1. Requisitos (máximo 3 preguntas)
 
-1. Entrega la **función o procedimiento completo** ya modificado (o `diff` si lo pidió), con el
-   nombre del archivo y la ubicación exacta.
-2. Respeta el estilo existente (nombres, idioma, indentación).
-3. No toques nada fuera del bloque. Si ves otro problema, ponlo en **"Fuera de alcance"**.
-4. Pasa la verificación del método (§4), incluidas las trampas del lenguaje.
-5. Cierra con el formato **HECHO** (cambió, cómo probar, cómo revertir, siguiente).
-6. **Espera** el OK o el reporte de prueba antes del siguiente bloque.
+Pregunta solo lo que cambia el diseño, en un solo mensaje:
 
-Si el usuario reporta un error, resuélvelo (modo `depurar-error`) antes de avanzar.
+1. **Qué resuelve y para quién** — en una frase.
+2. **Entradas y salidas** — de dónde vienen los datos y a dónde van.
+3. **Frecuencia y disparador** — manual, diario, por evento; quién lo ejecuta.
 
-### 4. Al terminar todos los bloques
+Lo que no sea crítico, **asúmelo y declara el supuesto**. Si toca nómina, SAP, datos financieros
+o bases productivas, dilo ya: el proyecto entero nace en **nivel protegido**.
 
-- Resumen de **3 líneas máximo** de lo que quedó.
-- Si hubo algo en "Fuera de alcance", recuérdalo en una línea y ofrece proponerlo.
+### 2. Diseño (propuesta, antes de código)
+
+Entrega el diseño y espera aprobación. Sin código todavía.
+
+```text
+DISEÑO — <Nombre>
+- Objetivo: <una línea>
+- Stack: <lenguaje y por qué ese, no otro>
+- Arquitectura: <módulos y qué hace cada uno>
+- Datos: <entradas → transformaciones → salidas>
+- Configuración externa: <qué va en Config.ini / .env y por qué>
+- Log y trazabilidad: <qué se registra>
+- Nivel protegido: <qué partes y qué exigen>
+- Riesgos: <qué puede salir mal>
+- Descartado: <qué alternativa consideraste y por qué no>
+¿Apruebas? (sí / ajusta / no)
+```
+
+**El lenguaje se elige por el problema**, no por costumbre (ver `principios-y-seguridad.md`).
+Di por qué ese y no otro: esa línea es la que el usuario va a agradecer en seis meses.
+
+**"Descartado" no es relleno.** Un diseño sin alternativa descartada es un diseño que no se
+pensó.
+
+### 3. Andamiaje, bloque por bloque
+
+Orden recomendado. Cada bloque espera el OK antes del siguiente:
+
+1. **Estructura y `.gitignore`** — las carpetas vacías con `.gitkeep`, y el `.gitignore` **antes**
+   del primer `git add`. Es la primera trampa de `trampas-conocidas.md` sección Git.
+2. **Configuración** — `Config.ini` o `.env` con valores **ficticios**, y su `.ejemplo` versionado.
+3. **Log** — desde el bloque 3, no al final: sin log no se depura lo que venga después.
+4. **El núcleo** — la pieza que resuelve el problema, con su manejo de errores.
+5. **Entrada y salida** — leer, escribir, conectar.
+6. **README** — con el modo `documentar-proceso`.
+
+Cada bloque cierra con el formato **HECHO** de `metodo-ejecutor.md` §5: qué cambió, cómo probar,
+cómo revertir.
+
+### 4. Al terminar
+
+Dos escrituras, y ninguna es código:
+
+**a) La nota del proyecto** en `Proyectos/<Nombre>/<Nombre>.md` de la bóveda, con la plantilla
+`99-Plantillas/Plantilla - Proyecto.md`. Llena objetivo, stack, arquitectura, **decisiones y por
+qué**, **dónde vive el código** (el enlace al repo) y nivel protegido. Si no puedes escribir en
+la bóveda, entrégala en un bloque `markdown` para pegar.
+
+**b) Las trampas nuevas**, si salió alguna: van a la sección `## Trampas` de
+`<Lenguaje>/Referencia/` en la bóveda, **no** a `trampas-conocidas.md`, que es generado.
+
+### 5. Qué NO hacer
+
+- **No generes el proyecto entero de un golpe** aunque parezca chico. El andamiaje se aprueba por
+  bloques como todo lo demás.
+- **No metas dependencias** sin proponerlas, con su alternativa sin dependencia.
+- **No inventes la estructura** de un framework que no has verificado: confirma en su
+  documentación oficial y declara la versión que asumes.
+- **No dejes datos reales** en la configuración de ejemplo, ni el nombre del servidor de la
+  empresa en el README.
 
 ---
 
 ## crear-script
 
-**Cuándo usarlo:** Ejecutor: crea scripts, programas o procesos nuevos en cualquier lenguaje: requisitos, diseño aprobado y código por bloques con configuración externa, log y manejo de errores. Usar al pedir crear.
+**Cuándo usarlo:** Ejecutor: crea un script o proceso nuevo en cualquier lenguaje, con configuración externa, log y manejo de errores. Usar al pedir crear un script suelto.
 
 Objetivo: construir algo nuevo que funcione a la primera, sea mantenible y respete los principios
 del usuario. **Diseño antes que código.** Sigue `metodo-ejecutor.md`.
@@ -171,9 +232,57 @@ Cada bloque: código completo con nombre de archivo → verificación (§4 del m
 
 ---
 
+## modificar-codigo
+
+**Cuándo usarlo:** Ejecutor: corrige, mejora o refactoriza código existente con propuesta, aprobación y entrega bloque por bloque. Usar al pedir cambios sobre código que ya existe.
+
+Objetivo: aplicar exactamente el cambio que el usuario aprueba, sin romper lo demás. Sigue la
+regla de aprobación de `metodo-ejecutor.md`.
+
+### 1. Entender antes de proponer
+
+- Lee el código afectado **completo** (la función entera y quién la llama). Si no te lo
+  compartieron, **pídelo**: no supongas código que no has visto.
+- Declara el lenguaje detectado.
+- Identifica si toca el **nivel protegido** (nómina, SAP, datos financieros, operaciones masivas,
+  envíos, credenciales).
+
+### 2. Propuesta
+
+Usa el formato de propuesta del método (qué, dónde, por qué, riesgo, nivel, bloques). Además:
+
+- **Mejoras:** cada una con su **porqué** y su **costo** (legibilidad, dependencia, rendimiento,
+  compatibilidad).
+- **Refactor:** declara "**comportamiento igual**" y cómo comprobarlo (mismas entradas → mismas salidas).
+- **Varias opciones válidas:** muestra máximo **dos**, con la regla para elegir y tu recomendación.
+- **Nivel protegido:** agrega respaldo, prueba en seco, plan de reversa y confirmación separada.
+
+**Espera la aprobación.** Si el usuario responde "ajusta", rehaz la propuesta.
+
+### 3. Ejecutar bloque por bloque
+
+Por cada bloque aprobado:
+
+1. Entrega la **función o procedimiento completo** ya modificado (o `diff` si lo pidió), con el
+   nombre del archivo y la ubicación exacta.
+2. Respeta el estilo existente (nombres, idioma, indentación).
+3. No toques nada fuera del bloque. Si ves otro problema, ponlo en **"Fuera de alcance"**.
+4. Pasa la verificación del método (§4), incluidas las trampas del lenguaje.
+5. Cierra con el formato **HECHO** (cambió, cómo probar, cómo revertir, siguiente).
+6. **Espera** el OK o el reporte de prueba antes del siguiente bloque.
+
+Si el usuario reporta un error, resuélvelo (modo `depurar-error`) antes de avanzar.
+
+### 4. Al terminar todos los bloques
+
+- Resumen de **3 líneas máximo** de lo que quedó.
+- Si hubo algo en "Fuera de alcance", recuérdalo en una línea y ofrece proponerlo.
+
+---
+
 ## depurar-error
 
-**Cuándo usarlo:** Ejecutor: diagnostica errores en cualquier lenguaje a partir de mensajes, capturas o comportamiento raro: causas probables, cómo confirmarlas y corrección con aprobación. Usar al compartir una falla.
+**Cuándo usarlo:** Ejecutor: diagnostica errores desde el mensaje, una captura o un comportamiento raro: causas probables, cómo confirmarlas y corrección. Usar al compartir una falla.
 
 Objetivo: encontrar la **causa real** rápido, confirmarla y corregirla con el mínimo cambio. El
 diagnóstico va directo; la corrección sigue la regla de aprobación de `metodo-ejecutor.md`.
@@ -231,7 +340,7 @@ Si la causa vale la pena recordarla, **propón una entrada** para `trampas-conoc
 
 ## documentar-proceso
 
-**Cuándo usarlo:** Ejecutor: documenta scripts o procesos en cualquier lenguaje: diagrama de flujo, pasos, entradas y salidas, configuración y README o manual de operación. Usar al pedir documentar un proceso.
+**Cuándo usarlo:** Ejecutor: documenta un script o proceso: flujo, entradas y salidas, configuración y README o manual de operación. Usar al pedir documentar.
 
 Objetivo: que otra persona (o el usuario dentro de 6 meses) pueda entender, ejecutar y mantener
 el proceso sin preguntar. Sigue `metodo-ejecutor.md`.
@@ -286,7 +395,7 @@ reutiliza ese análisis.
 
 ## migrar-lenguaje
 
-**Cuándo usarlo:** Ejecutor: migra código entre lenguajes (VBA, Python, AutoIt, JavaScript, SQL…): mapa de equivalencias, lo que no tiene equivalente y código migrado por bloques con aprobación. Usar al pedir migrar.
+**Cuándo usarlo:** Ejecutor: migra código entre lenguajes con mapa de equivalencias, lo que no tiene equivalente y entrega por bloques. Usar al pedir migrar de un lenguaje a otro.
 
 Objetivo: que el código migrado haga **lo mismo** que el original, escrito de forma **idiomática**
 en el lenguaje destino. Sigue la regla de aprobación de `metodo-ejecutor.md`.

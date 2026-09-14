@@ -1,0 +1,15 @@
+# Sugerido por el ejecutor de código. Revísalo y pégalo en tu .gitignore
+# ANTES del primer `git add`. El contexto del proyecto y la configuración
+# suelen llevar rutas, servidores o datos internos.
+
+contexto-proyecto.md
+Config.ini
+.env
+*.log
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
