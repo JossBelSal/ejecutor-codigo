@@ -65,7 +65,8 @@ documentación oficial y declara la versión que asumes.
 ### Modos y atajos
 
 Los procedimientos completos están en `.claude/skills/`: `analizar-codigo`, `crear-proyecto`,
-`crear-script`, `modificar-codigo`, `depurar-error`, `documentar-proceso`, `migrar-lenguaje`.
+`crear-script`, `modificar-codigo`, `depurar-error`, `documentar-proceso`, `migrar-lenguaje`,
+`revisar-seguridad`, `escribir-tests`.
 Ábrelos cuando apliquen; Codex no los carga solo.
 
 Atajos: `rápido` · `plan` · `diff` · `completo` · `explica` · `prueba` · `seguridad` · `contexto`

@@ -60,6 +60,8 @@ Están en `.claude/skills/`. Se cargan solos cuando aplican:
 | `depurar-error` | un error, una captura, un comportamiento raro |
 | `documentar-proceso` | README o manual de operación |
 | `migrar-lenguaje` | pasar código de un lenguaje a otro |
+| `revisar-seguridad` | `seguridad`, o antes de subir algo a Git |
+| `escribir-tests` | `prueba`, tests, o fijar un bug con un test |
 
 ## La regla de aprobación
 

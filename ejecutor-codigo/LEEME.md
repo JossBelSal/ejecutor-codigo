@@ -42,9 +42,10 @@ ejecutor-codigo/
 │   ├── contexto-proyecto.md      ← plantilla por proyecto
 │   ├── trampas-extra.md          ← trampas sin carpeta en la bóveda todavía
 │   └── trampas-conocidas.md      ← GENERADO desde la bóveda (no editar a mano)
-├── skills/                       FUENTE: los 7 modos
+├── skills/                       FUENTE: los 9 modos
 │   ├── analizar-codigo/   crear-proyecto/   crear-script/   modificar-codigo/
-│   └── depurar-error/     documentar-proceso/   migrar-lenguaje/
+│   ├── depurar-error/     documentar-proceso/   migrar-lenguaje/
+│   └── revisar-seguridad/ escribir-tests/
 ├── adaptadores/                  FUENTE: lo específico de cada destino
 │   ├── claude-code/   claude-proyecto/
 │   └── chatgpt-proyecto/   obsidian-boveda/
@@ -58,7 +59,7 @@ ejecutor-codigo/
 Ya no depende de tu memoria: `python armar_paquete.py --check` falla si `listo/` quedó desfasado,
 y el CI lo corre en cada push.
 
-## Los siete modos
+## Los nueve modos
 
 | Modo | Se activa cuando pides… |
 |---|---|
@@ -69,6 +70,8 @@ y el CI lo corre en cada push.
 | `depurar-error` | resolver un error o un comportamiento raro |
 | `documentar-proceso` | README o manual de operación |
 | `migrar-lenguaje` | pasar código de un lenguaje a otro |
+| `revisar-seguridad` | revisión de seguridad a fondo, antes de subir a Git o compartir |
+| `escribir-tests` | casos de prueba, test de regresión de un bug o arnés manual |
 
 `crear-proyecto` es el que diseña primero en la bóveda, pregunta **dónde va el código**, y solo
 entonces genera el andamiaje por bloques.
@@ -132,7 +135,7 @@ Copia el contenido de `listo/obsidian-boveda/` sobre la raíz de la bóveda:
 ### Proyecto de ChatGPT
 
 Pega `listo/chatgpt-proyecto/instrucciones.md` y sube **sueltos** los 5 archivos de
-`archivos-del-proyecto/`. No hay skills: los 7 modos van en `modos-ejecutor.md`.
+`archivos-del-proyecto/`. No hay skills: los 9 modos van en `modos-ejecutor.md`.
 
 ## Cómo pedir
 

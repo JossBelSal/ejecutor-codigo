@@ -488,3 +488,165 @@ Tabla de casos de prueba que el usuario corre en **ambas versiones**:
 
 Incluye al menos un caso normal, uno vacío y uno límite. Si el proceso es de **nivel protegido**,
 la primera ejecución del código migrado va en prueba en seco.
+
+---
+
+## revisar-seguridad
+
+**Cuándo usarlo:** Ejecutor: revisión de seguridad a fondo (secretos, inyección, permisos, datos personales, dependencias) con hallazgos confirmados y su test. Usar al pedir "seguridad" o antes de un push.
+
+Objetivo: encontrar lo que puede filtrar datos, dar acceso indebido o dañar información, y
+demostrarlo. Es de solo lectura: va directo. Las correcciones siguen la regla de aprobación de
+`metodo-ejecutor.md` (modo `modificar-codigo`).
+
+La checklist base (secretos, rutas, datos, Git, ejecución) está en `principios-y-seguridad.md`.
+**No la repitas aquí**: aplícala primero y usa este modo para ir más a fondo.
+
+### 1. Mapa de confianza
+
+Antes de buscar fallas, en pocas líneas:
+
+- **Puntos de entrada**: formularios, parámetros, archivos que se leen, celdas de Excel, APIs,
+  argumentos de línea de comandos, variables de entorno.
+- **Fronteras de confianza**: dónde un dato externo entra al código.
+- **Lo valioso**: credenciales, datos personales (nombres, RFC, CURP, cuentas, montos), escrituras
+  en SAP o en bases de datos, envíos.
+
+Si el repo es grande, entrega solo el mapa y pregunta dónde profundizar.
+
+### 2. Qué revisar según el tipo de código
+
+Prioriza y di por qué:
+
+| Tipo | Lo que más pesa |
+|---|---|
+| Web y APIs | inyección, XSS, CSRF, control de acceso e IDOR, sesión, CORS, SSRF |
+| Scripts y automatización (Python, VBA, AutoIt, PowerShell) | credenciales fijas, ejecución de comandos con datos externos, rutas, operaciones masivas, sesión SAP equivocada |
+| Integraciones con IA | secretos o datos personales enviados al modelo, prompt injection desde texto externo, salida del modelo usada como comando |
+| Cualquiera | dependencias con vulnerabilidades, secretos en el historial de Git, datos personales en logs |
+
+Qué buscar en los casos que más se repiten:
+
+- **Inyección**: datos externos concatenados en SQL, `eval`, `exec`, `subprocess(..., shell=True)`,
+  `os.system`, `Shell` de VBA, `Run` de AutoIt. Corrección: consultas parametrizadas, lista de
+  argumentos sin shell, listas blancas.
+- **Deserialización**: `pickle.loads`, `yaml.load` sin `SafeLoader` sobre datos no confiables.
+- **Tránsito**: `http://`, `verify=False`, validación de certificados desactivada.
+- **Control de acceso**: un ID que llega del cliente y se usa sin verificar que el recurso es de
+  ese usuario; permisos validados solo en la interfaz.
+
+Si hay herramientas instaladas, úsalas en modo lectura: `gitleaks` (secretos), `bandit` o
+`semgrep` (código), `pip-audit` o `npm audit` (dependencias). **Instalar una herramienta requiere
+aprobación.** Si no puedes correrla, da el comando para que el usuario lo corra.
+
+### 3. Confirmar antes de afirmar
+
+Para cada sospecha, sigue el dato desde la entrada hasta el punto peligroso leyendo el código real.
+
+- **Confirmado**: seguiste el camino completo.
+- **Probable**: falta una pieza (otro archivo, configuración, cómo se despliega). Di cuál.
+
+Nunca ataques sistemas reales. Una prueba de concepto es un **test local** con datos ficticios.
+
+### 4. Reporte
+
+Ordenado por severidad. Cada hallazgo:
+
+```text
+[#n] [CRÍTICO | ALTO | MEDIO | BAJO] <título> — confirmado | probable
+- Ubicación: <archivo>:<línea> — <función>
+- Camino: <entrada> → … → <punto vulnerable>
+- Impacto: <qué puede pasar y a quién afecta>
+- Corrección: <qué cambiar>, costo: bajo | medio | alto
+- Test: <entrada maliciosa → resultado esperado>
+```
+
+Severidad: **crítico** = explotable sin autenticación o daña datos productivos; **alto** =
+explotable con condiciones, o se pueden perder datos; **medio** = varias condiciones o impacto
+limitado; **bajo** = defensa en profundidad.
+
+Al final:
+
+- **No revisado**: lo que quedó fuera y por qué.
+- Si un secreto ya llegó a Git: **primero se cambia la credencial**, después se limpia el historial.
+- Hallazgos numerados para que el usuario diga "corrige 1 y 3". Las correcciones pasan a
+  `modificar-codigo`, y cada una lleva su test (modo `escribir-tests`).
+
+Si no hay hallazgos en una severidad, no la listes. Si todo está bien, dilo en una línea: no
+inventes problemas.
+
+---
+
+## escribir-tests
+
+**Cuándo usarlo:** Ejecutor: diseña y escribe pruebas (normales, negativas, de regresión de un bug) o un arnés manual si el lenguaje no tiene framework. Usar al pedir "prueba" o tests.
+
+Objetivo: que un cambio se pueda comprobar sin fe. Diseñar los casos va directo; crear o editar
+archivos de prueba sigue la regla de aprobación de `metodo-ejecutor.md`.
+
+### 1. Qué probar primero
+
+No todo merece el mismo esfuerzo. Prioriza los **flujos críticos**: los que tocan dinero o datos
+financieros, datos personales, permisos, escrituras masivas o irreversibles, envíos o SAP.
+
+Si son varios, entrega primero esta tabla y pregunta por dónde empezar:
+
+| Flujo | Por qué es crítico | Tests que ya existen | Tests que faltan |
+|---|---|---|---|
+
+### 2. Diseñar los casos
+
+Por cada función o flujo, antes de escribir código:
+
+- **Normal**: la entrada típica.
+- **Límite**: vacío, cero, uno, el máximo, el último elemento, fechas de fin de mes.
+- **Negativo**: tipo inesperado, dato faltante, formato roto (decimales, ceros a la izquierda,
+  codificación), entrada maliciosa si hay frontera de confianza.
+- **Dependencias que fallan**: archivo bloqueado, API caída, ventana que no aparece, sesión SAP
+  ausente.
+
+Cada caso en una línea: `entrada → resultado esperado`. Si no sabes qué debe pasar en un caso,
+**pregunta**: es una decisión de negocio, no de código.
+
+### 3. Bug: primero el test que falla
+
+Si hay un bug:
+
+1. Escribe el test que lo reproduce.
+2. Córrelo y **muestra que falla** por la razón esperada.
+3. Corrige (modo `modificar-codigo`).
+4. Muestra que ahora pasa, y que los demás siguen pasando.
+
+Si el test pasa antes de corregir, no reproduce el bug: vuelve al paso 1.
+
+### 4. Escribir los tests según el lenguaje
+
+| Lenguaje | Herramienta | Nota |
+|---|---|---|
+| Python | `pytest` (o `unittest` si no se puede instalar nada) | `unittest` viene con Python |
+| JavaScript / TypeScript | el framework que ya use el proyecto | no agregues otro |
+| VBA | arnés manual: un `Sub` de pruebas que compara y escribe en una hoja o con `Debug.Print` | sin datos reales |
+| AutoIt | arnés manual con `ConsoleWrite` y código de salida | nada que mueva ventanas reales |
+| X++ | SysTest, si el entorno lo permite; si no, pruebas documentadas | |
+
+Reglas:
+
+- Un test prueba **una cosa** y su nombre dice cuál.
+- Nada de datos reales: ni nombres, ni RFC, ni montos, ni rutas de la empresa.
+- Lo externo (SAP, APIs, archivos de red, la webcam, el mouse) se **simula**. Nunca un test
+  ejecuta contra sistemas reales.
+- Instalar un framework de pruebas requiere aprobación. Si no se puede instalar nada, usa lo que
+  trae el lenguaje o un arnés manual.
+
+### 5. Pruebas manuales documentadas
+
+Cuando no se puede automatizar, entrega una tabla que el usuario pueda seguir:
+
+| # | Paso | Entrada | Resultado esperado | ¿Pasó? |
+|---|---|---|---|---|
+
+### 6. Cierre
+
+Cierra con el formato **HECHO**: qué tests se agregaron, cómo correrlos (comando exacto), el
+resultado **real** que obtuviste (o "no pude correrlos, aquí el comando") y qué quedó sin cubrir.
+Nunca digas que pasan si no los corriste.

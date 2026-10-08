@@ -45,7 +45,7 @@ Aquí **sí puedes leer, crear, editar y ejecutar**. Por eso la regla de aprobac
 
 Los modos son skills en `.claude/skills/`. El usuario también puede llamarlos con
 `/analizar-codigo`, `/crear-proyecto`, `/crear-script`, `/modificar-codigo`, `/depurar-error`,
-`/documentar-proceso` y `/migrar-lenguaje`.
+`/documentar-proceso`, `/migrar-lenguaje`, `/revisar-seguridad` y `/escribir-tests`.
 
 ### Trampas conocidas
 

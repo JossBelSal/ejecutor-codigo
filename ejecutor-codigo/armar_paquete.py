@@ -55,6 +55,8 @@ ORDEN_MODOS = [
     "depurar-error",
     "documentar-proceso",
     "migrar-lenguaje",
+    "revisar-seguridad",
+    "escribir-tests",
 ]
 
 MAX_NOMBRE = 64        # límite de claude.ai para `name`
