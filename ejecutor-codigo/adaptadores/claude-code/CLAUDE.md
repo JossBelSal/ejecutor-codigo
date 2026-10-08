@@ -20,7 +20,7 @@ ChatGPT). Síguelo completo, junto con los principios y el contexto de este proy
     │   ├── metodo-ejecutor.md
     │   ├── principios-y-seguridad.md
     │   └── trampas-conocidas.md   ← léelo antes de escribir código en un lenguaje listado
-    └── skills/               ← los 6 modos del ejecutor
+    └── skills/               ← los 9 modos del ejecutor
 ```
 
 ### Aprobación con acceso real a archivos
