@@ -3,6 +3,12 @@ name: migrar-lenguaje
 description: 'Ejecutor: migra código entre lenguajes con mapa de equivalencias, lo que no tiene equivalente y entrega por bloques. Usar al pedir migrar de un lenguaje a otro.'
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Modo: migrar de lenguaje
 
 Objetivo: que el código migrado haga **lo mismo** que el original, escrito de forma **idiomática**

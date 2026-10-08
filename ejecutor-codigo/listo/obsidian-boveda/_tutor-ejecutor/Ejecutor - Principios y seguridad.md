@@ -3,6 +3,12 @@ tags: [tipo/ejecutor, estado/en-curso]
 creado: 2026-09-14
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Principios y seguridad
 
 Criterios **por defecto** para crear o modificar código. Aplican en cualquier lenguaje. Si

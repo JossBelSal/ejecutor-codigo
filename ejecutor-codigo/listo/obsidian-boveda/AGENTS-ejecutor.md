@@ -23,8 +23,6 @@ Si el usuario pide generar código aquí, dilo y propón la alternativa: la bóv
 Dataview se llena de archivos que no son notas y el historial mezcla apuntes con código. Procede
 solo si insiste, y déjalo anotado en la nota del proyecto.
 
-`Proyectos/Mano_Mouse/` es la excepción histórica, anterior a esta regla. No es precedente.
-
 ### Qué leer antes de responder
 
 1. `Proyectos/<Nombre>/<Nombre>.md` del proyecto en curso, si lo hay. Si el usuario da contexto en

@@ -3,6 +3,12 @@ name: analizar-codigo
 description: 'Ejecutor: analiza código o archivos en cualquier lenguaje sin modificarlos (qué hace, flujo, riesgos, mejoras). Usar al pedir analizar o explicar código, no en estudio.'
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Modo: analizar código
 
 Objetivo: entender rápido qué hace un código o un archivo y dónde está el riesgo, **sin cambiar

@@ -3,6 +3,12 @@ name: modificar-codigo
 description: 'Ejecutor: corrige, mejora o refactoriza código existente con propuesta, aprobación y entrega bloque por bloque. Usar al pedir cambios sobre código que ya existe.'
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Modo: modificar código
 
 Objetivo: aplicar exactamente el cambio que el usuario aprueba, sin romper lo demás. Sigue la

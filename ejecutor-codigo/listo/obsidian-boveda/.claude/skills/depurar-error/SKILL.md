@@ -3,6 +3,12 @@ name: depurar-error
 description: 'Ejecutor: diagnostica errores desde el mensaje, una captura o un comportamiento raro: causas probables, cómo confirmarlas y corrección. Usar al compartir una falla.'
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Modo: depurar error
 
 Objetivo: encontrar la **causa real** rápido, confirmarla y corregirla con el mínimo cambio. El
