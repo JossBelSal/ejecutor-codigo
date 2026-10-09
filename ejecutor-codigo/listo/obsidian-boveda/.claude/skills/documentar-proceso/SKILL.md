@@ -3,6 +3,12 @@ name: documentar-proceso
 description: 'Ejecutor: documenta un script o proceso: flujo, entradas y salidas, configuración y README o manual de operación. Usar al pedir documentar.'
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Modo: documentar proceso
 
 Objetivo: que otra persona (o el usuario dentro de 6 meses) pueda entender, ejecutar y mantener

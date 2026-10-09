@@ -55,11 +55,21 @@ ORDEN_MODOS = [
     "depurar-error",
     "documentar-proceso",
     "migrar-lenguaje",
+    "revisar-seguridad",
+    "escribir-tests",
 ]
 
 MAX_NOMBRE = 64        # límite de claude.ai para `name`
 MAX_DESCRIPCION = 200  # límite de claude.ai para `description`
 AVISO_DESCRIPCION = 180  # a partir de aquí, advertir: queda poco margen para editar
+
+# En la bóveda los archivos del paquete viven con otro nombre o se reparten en notas.
+RUTAS_BOVEDA = """> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+"""
 
 # Lo que el paquete de Claude Code sugiere ignorar en cada repositorio.
 GITIGNORE_SUGERIDO = """# Sugerido por el ejecutor de código. Revísalo y pégalo en tu .gitignore
@@ -191,6 +201,21 @@ def envolver_nota_boveda(cuerpo: str, tags: str) -> str:
     return f"---\ntags: {tags}\ncreado: 2026-09-14\n---\n\n{cuerpo.strip()}\n"
 
 
+def con_rutas_boveda(texto: str) -> str:
+    """Inserta, tras el frontmatter (o al inicio si no hay), la equivalencia de los archivos
+    del paquete con su ubicación en la bóveda.
+
+    Las fuentes nombran `metodo-ejecutor.md` y compañía porque así se llaman en las demás
+    plataformas. En la bóveda esos archivos no existen con ese nombre: sin esta tabla, las
+    skills mandan al modelo a buscar archivos fantasma.
+    """
+    if texto.startswith("---\n"):
+        fin = texto.index("\n---\n", 4) + len("\n---\n")
+        cabeza, cuerpo = texto[:fin], texto[fin:].lstrip("\n")
+        return f"{cabeza}\n{RUTAS_BOVEDA}\n{cuerpo}"
+    return f"{RUTAS_BOVEDA}\n{texto}"
+
+
 def escribir_zip_reproducible(destino: Path, carpeta: Path) -> None:
     """ZIP con fecha fija: el archivo solo cambia si cambia el contenido."""
     with zipfile.ZipFile(destino, "w", zipfile.ZIP_DEFLATED) as z:
@@ -255,19 +280,28 @@ def construir(destino_raiz: Path, skills: list, modos: str) -> None:
     shutil.copy2(origen_bov / "AGENTS-ejecutor.md", bov / "AGENTS-ejecutor.md")
     escribir(bov / ".claude" / "agents" / "ejecutor.md", leer(origen_bov / "agentes" / "ejecutor.md"))
     for carpeta, _, _ in skills:
-        escribir(bov / ".claude" / "skills" / carpeta.name / "SKILL.md", leer(carpeta / "SKILL.md"))
+        escribir(
+            bov / ".claude" / "skills" / carpeta.name / "SKILL.md",
+            con_rutas_boveda(leer(carpeta / "SKILL.md")),
+        )
     escribir(
         bov / "99-Plantillas" / "Plantilla - Proyecto.md",
         leer(origen_bov / "Plantilla - Proyecto.md"),
     )
     escribir(
         bov / "_tutor-ejecutor" / "Ejecutor - Metodo.md",
-        envolver_nota_boveda(leer(NUCLEO / "metodo-ejecutor.md"), "[tipo/ejecutor, estado/en-curso]"),
+        con_rutas_boveda(
+            envolver_nota_boveda(
+                leer(NUCLEO / "metodo-ejecutor.md"), "[tipo/ejecutor, estado/en-curso]"
+            )
+        ),
     )
     escribir(
         bov / "_tutor-ejecutor" / "Ejecutor - Principios y seguridad.md",
-        envolver_nota_boveda(
-            leer(NUCLEO / "principios-y-seguridad.md"), "[tipo/ejecutor, estado/en-curso]"
+        con_rutas_boveda(
+            envolver_nota_boveda(
+                leer(NUCLEO / "principios-y-seguridad.md"), "[tipo/ejecutor, estado/en-curso]"
+            )
         ),
     )
 

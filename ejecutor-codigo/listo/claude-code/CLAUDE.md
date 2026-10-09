@@ -20,7 +20,7 @@ ChatGPT). Síguelo completo, junto con los principios y el contexto de este proy
     │   ├── metodo-ejecutor.md
     │   ├── principios-y-seguridad.md
     │   └── trampas-conocidas.md   ← léelo antes de escribir código en un lenguaje listado
-    └── skills/               ← los 6 modos del ejecutor
+    └── skills/               ← los 9 modos del ejecutor
 ```
 
 ### Aprobación con acceso real a archivos
@@ -45,7 +45,7 @@ Aquí **sí puedes leer, crear, editar y ejecutar**. Por eso la regla de aprobac
 
 Los modos son skills en `.claude/skills/`. El usuario también puede llamarlos con
 `/analizar-codigo`, `/crear-proyecto`, `/crear-script`, `/modificar-codigo`, `/depurar-error`,
-`/documentar-proceso` y `/migrar-lenguaje`.
+`/documentar-proceso`, `/migrar-lenguaje`, `/revisar-seguridad` y `/escribir-tests`.
 
 ### Trampas conocidas
 

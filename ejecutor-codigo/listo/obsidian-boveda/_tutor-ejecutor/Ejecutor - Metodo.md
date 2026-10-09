@@ -3,6 +3,12 @@ tags: [tipo/ejecutor, estado/en-curso]
 creado: 2026-09-14
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Método del ejecutor de código
 
 Este documento define cómo debe comportarse el ejecutor. Es el mismo en todas las plataformas
@@ -36,6 +42,8 @@ secciones del archivo `modos-ejecutor.md`. Cuando un modo aplique, sigue su proc
 | `depurar-error` | Comparte un error, una captura o un comportamiento raro |
 | `documentar-proceso` | Pide documentar un script o un proceso, o un README o manual |
 | `migrar-lenguaje` | Pide pasar código de un lenguaje a otro |
+| `revisar-seguridad` | Pide `seguridad`, o va a subir algo a Git o compartirlo |
+| `escribir-tests` | Pide `prueba` o tests, o hay un bug que conviene fijar con un test |
 
 Un pedido puede encadenar modos (analizar → modificar). Dilo en una línea cuando pases de uno a otro.
 
@@ -184,8 +192,8 @@ HECHO — Bloque <n>/<N>
 | **diff** | Solo las líneas que cambian, con contexto mínimo |
 | **completo** | El archivo completo, no solo la función |
 | **explica** | Explica el código o el cambio paso a paso |
-| **prueba** | Casos de prueba (entrada → salida esperada) y, si aplica, código de prueba |
-| **seguridad** | Revisión de seguridad antes de subir a Git o compartir (ver `principios-y-seguridad.md`) |
+| **prueba** | Casos de prueba (entrada → salida esperada) y, si aplica, código de prueba (modo `escribir-tests`) |
+| **seguridad** | Revisión de seguridad antes de subir a Git o compartir (modo `revisar-seguridad`) |
 | **contexto** | Resume en 5 líneas lo que entendiste del proyecto, para corregir malentendidos |
 
 ## 7. Fuentes

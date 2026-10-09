@@ -3,6 +3,12 @@ name: crear-proyecto
 description: 'Ejecutor: diseña y genera un proyecto completo: requisitos, diseño aprobado, dónde vive el código y andamiaje por bloques. Usar al pedir un proyecto, no un script suelto.'
 ---
 
+> **En esta bóveda**, los archivos que se nombran abajo están aquí:
+> `metodo-ejecutor.md` → `Logica/_tutor-ejecutor/Ejecutor - Metodo.md` ·
+> `principios-y-seguridad.md` → `Logica/_tutor-ejecutor/Ejecutor - Principios y seguridad.md` ·
+> `trampas-conocidas.md` → la sección `## Trampas` de `<Lenguaje>/Referencia/` (ahí se anotan
+> las nuevas) · `contexto-proyecto.md` → `Proyectos/<Nombre>/<Nombre>.md`.
+
 # Modo: crear proyecto
 
 Objetivo: pasar de una idea a un proyecto con estructura, decisiones documentadas y andamiaje

@@ -15,7 +15,9 @@ from tempfile import TemporaryDirectory
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from armar_paquete import (  # noqa: E402
+    RUTAS_BOVEDA,
     bajar_titulos,
+    con_rutas_boveda,
     escribir_zip_reproducible,
     extraer_trampas,
     recolectar_trampas,
@@ -172,3 +174,20 @@ class ZipReproducible(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RutasBoveda(unittest.TestCase):
+    def test_va_despues_del_frontmatter(self):
+        texto = con_rutas_boveda("---\nname: uno\n---\n\n# Modo\n")
+        self.assertTrue(texto.startswith("---\nname: uno\n---\n\n> **En esta bóveda**"))
+        campos, cuerpo = separar_frontmatter(texto)
+        self.assertEqual(campos["name"], "uno")
+        self.assertTrue(cuerpo.rstrip().endswith("# Modo"))
+
+    def test_sin_frontmatter_va_al_inicio(self):
+        self.assertTrue(con_rutas_boveda("# Nota\n").startswith(RUTAS_BOVEDA))
+
+    def test_nombra_cada_archivo_del_paquete(self):
+        for archivo in ["metodo-ejecutor.md", "principios-y-seguridad.md",
+                        "trampas-conocidas.md", "contexto-proyecto.md"]:
+            self.assertIn(f"`{archivo}`", RUTAS_BOVEDA)

@@ -5,10 +5,10 @@ ARCHIVOS DEL PROYECTO
 - principios-y-seguridad.md: arquitectura preferida y reglas de seguridad.
 - trampas-conocidas.md: revísalo antes de entregar código en un lenguaje listado.
 - contexto-proyecto.md: contexto del proyecto actual. Si el usuario da contexto en el chat, ese manda.
-- modos-ejecutor.md (respaldo): los 7 modos, por si las skills no se activan.
+- modos-ejecutor.md (respaldo): los 9 modos, por si las skills no se activan.
 
 MODOS
-Usa las skills del ejecutor: analizar-codigo, crear-proyecto, crear-script, modificar-codigo, depurar-error, documentar-proceso y migrar-lenguaje. Si una no está disponible, usa su sección en modos-ejecutor.md. Las skills del tutor (diagnostico-logica, reto-por-niveles, revisar-mi-codigo, comparar-lenguajes, cierre-de-sesion, destilar-sesion) NO aplican en este proyecto.
+Usa las skills del ejecutor: analizar-codigo, crear-proyecto, crear-script, modificar-codigo, depurar-error, documentar-proceso, migrar-lenguaje, revisar-seguridad y escribir-tests. Si una no está disponible, usa su sección en modos-ejecutor.md. Las skills del tutor (diagnostico-logica, reto-por-niveles, revisar-mi-codigo, comparar-lenguajes, cierre-de-sesion, destilar-sesion) NO aplican en este proyecto.
 
 ARRANQUE
 1. Declara el lenguaje detectado. Si es ambiguo y cambia la respuesta, pregunta.
